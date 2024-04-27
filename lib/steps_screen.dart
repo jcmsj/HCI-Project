@@ -35,10 +35,19 @@ class _StepsScreenState extends State<steps_screen> {
             Expanded(
               child: Container(
                 padding: EdgeInsets.all(16),
-                child: Text(
-                  stepContent[selectedStepIndex],
-                  style: TextStyle(fontSize: 16),
-                  textAlign: TextAlign.center,
+                child: Column(
+                  children: [
+                    Image.asset(
+                      earthquakeSteps[selectedStepIndex],
+                      fit: BoxFit.cover,
+                    ),
+                    SizedBox(height: 16),
+                    Text(
+                      stepContent[selectedStepIndex],
+                      style: TextStyle(fontSize: 16),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -75,13 +84,23 @@ class _StepsScreenState extends State<steps_screen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  IconButton(
-                    onPressed: _launchDialer,
-                    icon: Icon(Icons.phone),
+                  Theme(
+                    data: Theme.of(context).copyWith(
+                      iconTheme: IconThemeData(color: Colors.lightBlue),
+                    ),
+                    child: IconButton(
+                      onPressed: _launchDialer,
+                      icon: Icon(Icons.phone),
+                    ),
                   ),
-                  IconButton(
-                    onPressed: _launchMessenger,
-                    icon: Icon(Icons.message),
+                  Theme(
+                    data: Theme.of(context).copyWith(
+                      iconTheme: IconThemeData(color: Colors.lightBlue),
+                    ),
+                    child: IconButton(
+                      onPressed: _launchMessenger,
+                      icon: Icon(Icons.message),
+                    ),
                   ),
                 ],
               ),
