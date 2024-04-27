@@ -19,6 +19,12 @@ class _StepsScreenState extends State<steps_screen> {
     'assets/content3.png',
   ];
 
+  final List<String> stepheader = [
+    'DUCK COVER AND HOLD!',
+    'GET TO SAFETY!',
+    'EVACUATE!',
+  ];
+
   final List<String> stepContent = [
     'During an earthquake, quickly move to a safe location away from windows and heavy furniture. Take cover under a sturdy table or desk, and protect your head and neck with your arms.',
     'If possible, move to an open area away from buildings, trees, streetlights, and utility wires. Be cautious of falling debris and aftershocks.',
@@ -33,7 +39,8 @@ class _StepsScreenState extends State<steps_screen> {
       title: 'Quake Alert',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Quake Alert'),
+          title: Text('Quake Alert', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Color(
+              0xFF4EA0FD))),
           backgroundColor: Colors.white,
         ),
         backgroundColor: Colors.white,
@@ -53,8 +60,14 @@ class _StepsScreenState extends State<steps_screen> {
                         ),
                         SizedBox(height: 16),
                         Text(
+                          stepheader[selectedStepIndex],
+                          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Color(
+                              0xFF4EA0FD)),
+                          textAlign: TextAlign.center,
+                        ),
+                        Text(
                           stepContent[selectedStepIndex],
-                          style: TextStyle(fontSize: 16),
+                          style: TextStyle(fontSize: 15),
                           textAlign: TextAlign.center,
                         ),
                       ],
@@ -65,7 +78,8 @@ class _StepsScreenState extends State<steps_screen> {
                   padding: EdgeInsets.all(0),
                   child: Text(
                     'Steps:',
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Color(
+                        0xFF4EA0FD)),
                   ),
                 ),
                 Container(
@@ -127,7 +141,7 @@ class _StepsScreenState extends State<steps_screen> {
   }
 
   void _launchDialer() async {
-    const phoneNumber = 'tel:+1234567890'; // Replace with the desired phone number
+    const phoneNumber = 'tel:+911'; // Replace with the desired phone number
     if (await canLaunch(phoneNumber)) {
       await launch(phoneNumber);
     } else {
@@ -136,7 +150,7 @@ class _StepsScreenState extends State<steps_screen> {
   }
 
   void _launchMessenger() async {
-    const messengerUrl = 'sms:1234567890'; // Replace with the desired phone number
+    const messengerUrl = 'sms:911'; // Replace with the desired phone number
     if (await canLaunch(messengerUrl)) {
       await launch(messengerUrl);
     } else {

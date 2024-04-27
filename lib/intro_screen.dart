@@ -12,10 +12,11 @@ class intro_screen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: 200, // Adjust the width as needed
+                width: 500, // Adjust the width as needed
                 child: Text(
                   'Quake Alert',
-                  style: TextStyle(fontSize: 24, color: Colors.white),
+                  style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold, color: Color(
+                      0xFFFFFFFF)),
                   textAlign: TextAlign.center,
                 ),
               ),

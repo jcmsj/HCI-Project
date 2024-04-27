@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sample/steps_screen.dart';
 
 class alert_screen extends StatelessWidget {
   @override
@@ -14,13 +15,19 @@ class alert_screen extends StatelessWidget {
                 width: 200, // Adjust the width as needed
                 child: Text(
                   'Earthquake Alert!!!',
-                  style: TextStyle(fontSize: 24, color: Colors.white),
+                  style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold, color: Color(
+                      0xFFFFFFFF)),
                   textAlign: TextAlign.center,
                 ),
               ),
               SizedBox(height: 40),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => steps_screen()),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,
                 ),
