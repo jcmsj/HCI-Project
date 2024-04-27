@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class steps_screen extends StatefulWidget {
   @override
-  _MyAppState createState() => _MyAppState();
+  _StepsScreenState createState() => _StepsScreenState();
 }
 
-class _MyAppState extends State<steps_screen> {
+class _StepsScreenState extends State<steps_screen> {
   final List<String> earthquakeSteps = [
-    'Duck, Cover, and Hold',
-    'Get to Safety',
-    'Evacuate',
+    'assets/step1.png',
+    'assets/step2.png',
+    'assets/step3.png',
   ];
 
   final List<String> stepContent = [
@@ -48,23 +49,64 @@ class _MyAppState extends State<steps_screen> {
                 style: TextStyle(fontSize: 20),
               ),
             ),
-            Slider(
-              value: selectedStepIndex.toDouble(),
-              min: 0,
-              max: (earthquakeSteps.length - 1).toDouble(),
-              divisions: earthquakeSteps.length - 1,
-              onChanged: (double value) {
-                setState(() {
-                  selectedStepIndex = value.toInt();
-                });
-              },
-              label: earthquakeSteps[selectedStepIndex],
-              activeColor: Colors.lightBlue,
-              inactiveColor: Colors.grey,
+            Container(
+              height: 200,
+              child: PageView.builder(
+                itemCount: earthquakeSteps.length,
+                controller: PageController(viewportFraction: 0.8),
+                onPageChanged: (int index) {
+                  setState(() {
+                    selectedStepIndex = index;
+                  });
+                },
+                itemBuilder: (BuildContext context, int index) {
+                  return Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Image.asset(
+                      earthquakeSteps[index],
+                      fit: BoxFit.cover,
+                    ),
+                  );
+                },
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(bottom: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    onPressed: _launchDialer,
+                    icon: Icon(Icons.phone),
+                  ),
+                  IconButton(
+                    onPressed: _launchMessenger,
+                    icon: Icon(Icons.message),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
       ),
     );
+  }
+
+  void _launchDialer() async {
+    const phoneNumber = 'tel:+1234567890'; // Replace with the desired phone number
+    if (await canLaunch(phoneNumber)) {
+      await launch(phoneNumber);
+    } else {
+      print('Could not launch $phoneNumber');
+    }
+  }
+
+  void _launchMessenger() async {
+    const messengerUrl = 'sms:1234567890'; // Replace with the desired phone number
+    if (await canLaunch(messengerUrl)) {
+      await launch(messengerUrl);
+    } else {
+      print('Could not launch $messengerUrl');
+    }
   }
 }
