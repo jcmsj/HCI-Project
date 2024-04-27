@@ -13,6 +13,12 @@ class _StepsScreenState extends State<steps_screen> {
     'assets/step3.png',
   ];
 
+  final List<String> contents = [
+    'assets/content1.png',
+    'assets/content2.png',
+    'assets/content3.png',
+  ];
+
   final List<String> stepContent = [
     'During an earthquake, quickly move to a safe location away from windows and heavy furniture. Take cover under a sturdy table or desk, and protect your head and neck with your arms.',
     'If possible, move to an open area away from buildings, trees, streetlights, and utility wires. Be cautious of falling debris and aftershocks.',
@@ -28,84 +34,93 @@ class _StepsScreenState extends State<steps_screen> {
       home: Scaffold(
         appBar: AppBar(
           title: Text('Quake Alert'),
+          backgroundColor: Colors.white,
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.all(16),
-                child: Column(
-                  children: [
-                    Image.asset(
-                      earthquakeSteps[selectedStepIndex],
-                      fit: BoxFit.cover,
+        backgroundColor: Colors.white,
+        body: LayoutBuilder(
+          builder: (context, constraints) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.all(16),
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          contents[selectedStepIndex],
+                          fit: BoxFit.cover,
+                        ),
+                        SizedBox(height: 16),
+                        Text(
+                          stepContent[selectedStepIndex],
+                          style: TextStyle(fontSize: 16),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
                     ),
-                    SizedBox(height: 16),
-                    Text(
-                      stepContent[selectedStepIndex],
-                      style: TextStyle(fontSize: 16),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
+                  ),
                 ),
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.all(16),
-              child: Text(
-                'Steps:',
-                style: TextStyle(fontSize: 20),
-              ),
-            ),
-            Container(
-              height: 200,
-              child: PageView.builder(
-                itemCount: earthquakeSteps.length,
-                controller: PageController(viewportFraction: 0.8),
-                onPageChanged: (int index) {
-                  setState(() {
-                    selectedStepIndex = index;
-                  });
-                },
-                itemBuilder: (BuildContext context, int index) {
-                  return Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Image.asset(
-                      earthquakeSteps[index],
-                      fit: BoxFit.cover,
-                    ),
-                  );
-                },
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.only(bottom: 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Theme(
-                    data: Theme.of(context).copyWith(
-                      iconTheme: IconThemeData(color: Colors.lightBlue),
-                    ),
-                    child: IconButton(
-                      onPressed: _launchDialer,
-                      icon: Icon(Icons.phone),
+                Container(
+                  padding: EdgeInsets.all(0),
+                  child: Text(
+                    'Steps:',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+                Container(
+                  height: constraints.maxHeight * 0.2, // Adjust the fraction as needed
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: PageView.builder(
+                      itemCount: earthquakeSteps.length,
+                      controller: PageController(viewportFraction: 0.8),
+                      onPageChanged: (int index) {
+                        setState(() {
+                          selectedStepIndex = index;
+                        });
+                      },
+                      itemBuilder: (BuildContext context, int index) {
+                        return Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10.0),
+                          child: Image.asset(
+                            earthquakeSteps[index],
+                            fit: BoxFit.contain,
+                          ),
+                        );
+                      },
                     ),
                   ),
-                  Theme(
-                    data: Theme.of(context).copyWith(
-                      iconTheme: IconThemeData(color: Colors.lightBlue),
-                    ),
-                    child: IconButton(
-                      onPressed: _launchMessenger,
-                      icon: Icon(Icons.message),
-                    ),
+                ),
+                Container(
+                  padding: EdgeInsets.only(bottom: 16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Theme(
+                        data: Theme.of(context).copyWith(
+                          iconTheme: IconThemeData(color: Colors.lightBlue),
+                        ),
+                        child: IconButton(
+                          onPressed: _launchDialer,
+                          icon: Icon(Icons.phone),
+                        ),
+                      ),
+                      Theme(
+                        data: Theme.of(context).copyWith(
+                          iconTheme: IconThemeData(color: Colors.lightBlue),
+                        ),
+                        child: IconButton(
+                          onPressed: _launchMessenger,
+                          icon: Icon(Icons.message),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-          ],
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
