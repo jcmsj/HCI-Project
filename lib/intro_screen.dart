@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'steps_screen.dart';
+import 'alert_screen.dart';
 
 class intro_screen extends StatelessWidget {
   @override
@@ -42,7 +42,7 @@ class intro_screen extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => steps_screen()),
+                    MaterialPageRoute(builder: (context) => alert_screen()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
