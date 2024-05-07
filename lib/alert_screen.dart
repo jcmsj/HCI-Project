@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sample/steps_screen.dart';
+import 'steps_screen.dart';
 
 class AlertScreen extends StatelessWidget {
   final String earthquakeDetails = '''
