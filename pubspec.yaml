@@ -68,6 +68,13 @@ flutter:
     - assets/content1.png
     - assets/content2.png
     - assets/content3.png
+    - assets/marx_roxas.png
+    - assets/john_robias.png
+    - assets/alex_sison.png
+    - assets/jean_sanjuan.png
+    # - assets/roxas.png
+    # - assets/sison.png
+    # - assets/robias.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

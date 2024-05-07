@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'alert_screen.dart';
 import 'intro_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'My App',
-      home: intro_screen(),
+    return const MaterialApp(
+      title: 'Quake Alert',
+      home: IntroScreen(),
     );
   }
 }
