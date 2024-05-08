@@ -46,11 +46,11 @@ class AboutScreen extends StatelessWidget {
       case 0:
         return 'assets/marx_roxas.png';
       case 1:
-        return 'assets/john_robias.png';
+        return 'assets/john_robias.jpg';
       case 2:
         return 'assets/jean_sanjuan.png';
       case 3:
-        return 'assets/alex_sison.png';
+        return 'assets/alex_sison.gif';
       default:
         return '';
     }
@@ -59,13 +59,13 @@ class AboutScreen extends StatelessWidget {
   String _getDeveloperName(int index) {
     switch (index) {
       case 0:
-        return 'Marx Roxas';
+        return 'Marx Gabriel Roxas';
       case 1:
         return 'John Maverick Robias';
       case 2:
         return 'Jean Carlo M. San Juan';
       case 3:
-        return 'Alex Sison';
+        return 'Alex Wilhelm Sison';
       default:
         return '';
     }

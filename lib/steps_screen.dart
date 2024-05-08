@@ -69,13 +69,57 @@ class _StepsScreenState extends State<steps_screen> {
             Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-              child: Text(
-                stepContent[selectedStepIndex],
-                style: const TextStyle(fontSize: 16, color: Colors.black54),
-                textAlign: TextAlign.center,
+              child: Column(
+                children: [
+                  Text(
+                    stepContent[selectedStepIndex],
+                    style: const TextStyle(fontSize: 16, color: Colors.black54),
+                    textAlign: TextAlign.center,
+                  ),
+                  const Text(
+                    "Emergency hotlines:",
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.lightBlue),
+                    textAlign: TextAlign.center,
+                  ),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "NDRRMC: ",
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.black54,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "911-5061",
+                        style: TextStyle(fontSize: 18, color: Colors.black54),
+                      )
+                    ],
+                  ),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "DOH-HEMS: ",
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.black54,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "711-10011",
+                        style: TextStyle(fontSize: 18, color: Colors.black54),
+                      )
+                    ],
+                  ),
+                ],
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
             const Text(
               'Steps:',
               style: TextStyle(
